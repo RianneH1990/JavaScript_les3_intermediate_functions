@@ -9,6 +9,16 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+function getEmailDomain(email) {
+    return email.split("@").pop();
+}
+const emailEeken = "n.eeken@novi-education.nl";
+const emailMellink = "t.mellink@novi.nl";
+const emailWiersma = "a.wiersma@outlook.com"
+console.log(getEmailDomain(emailEeken));
+console.log(getEmailDomain(emailMellink));
+console.log(getEmailDomain(emailWiersma));
+
 
 
 
@@ -20,7 +30,26 @@
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+function typeOfEmail(emails) {
+    if (emails.includes("@novi-education.nl")) {
+        return "Student";
+    }
+    else if (emails.includes("@novi.nl")) {
+        return "Medewerker";
+    }else {
+        return "Extern";
+    }
+}
 
+const email1 = typeOfEmail("n.eeken@novi-education.nl");
+const email2 = typeOfEmail("t.mellink@novi.nl");
+const email3 = typeOfEmail("novi.nlaapjesk@outlook.com");
+const email4 = typeOfEmail("a.wiersma@outlook.com");
+
+console.log(email1);
+console.log(email2);
+console.log(email3);
+console.log(email4);
 
 /* Opdracht  3 */
 // Schrijf een functie genaamd checkEmailValidity, die een emailadres verwacht en checkt of het emailadres valide is. De functie returned true of false, afhankelijk van de uitkomst.
@@ -34,3 +63,13 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+function checkEmailValidity(emailInput) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput);
+}
+
+console.log(checkEmailValidity("n.eeken@novi.nl"));
+console.log(checkEmailValidity("tessmellink@novi.nl"));
+console.log(checkEmailValidity("n.eekenanovi.nl"));
+console.log(checkEmailValidity("n.eeken@novinl."));
+console.log(checkEmailValidity("tessmellink@novi,nl"));
